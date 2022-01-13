@@ -1,0 +1,9 @@
+{
+  "rulesDirectory": ["tslint-config-prettier", "tslint-plugin-prettier", "tslint-config-airbnb-base"],
+  "jsRules": {
+    "no-unused-expression": true
+  },
+  "rules": {
+    "prettier": true
+  }
+}
