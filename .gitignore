@@ -38,3 +38,4 @@ lerna-debug.log*
 
 /secrets/secrets.js
 ormconfig.json
+.env
