@@ -3,20 +3,28 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "yarn dist && node dist/index.js",
+    "start": "yarn build && node dist/index.js",
     "start:dev": "cross-env NODE_ENV=development nodemon",
     "build": "rimraf dist && tsc",
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --forceExit",
+    "test": "yarn build && cross-env NODE_ENV=test jest --detectOpenHandles --forceExit",
     "format": "prettier-standard --format --fix \"src/**/*.{js,ts}\"",
     "lint": "prettier-standard --lint src/**/*.{js,ts}",
     "coverage": "cat ./test/coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "fastify": "^3.25.3"
+    "bignumber.js": "^9.0.2",
+    "bintrees": "^1.0.2",
+    "fastify": "^3.25.3",
+    "fastify-swagger": "^4.13.1",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.16.8",
+    "@types/bintrees": "^1.0.3",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.8",
+    "@types/uuid": "^8.3.4",
     "concurrently": "^7.0.0",
     "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
