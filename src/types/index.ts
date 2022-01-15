@@ -4,9 +4,9 @@ import { IncomingMessage, Server, ServerResponse } from 'http';
 import { BigNumber } from 'bignumber.js';
 import { object, string } from 'yup';
 
-export type Request = FastifyRequest<RouteGenericInterface, Server, IncomingMessage, unknown>;
+export type Request = FastifyRequest<RouteGenericInterface, Server, IncomingMessage, any>;
 
-export type Reply = FastifyReply<Server, IncomingMessage, ServerResponse, RouteGenericInterface, unknown>;
+export type Reply = FastifyReply<Server, IncomingMessage, ServerResponse, RouteGenericInterface, any>;
 
 export interface IQuerystring {
   username: string;
@@ -24,7 +24,6 @@ export interface Book {
 
 export interface Order {
   id: string,
-  makerOrderId?: string,
   side: 'buy' | 'sell',
   price: BigNumber,
   size: BigNumber

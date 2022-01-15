@@ -12,6 +12,7 @@
     "coverage": "cat ./test/coverage/lcov.info | coveralls"
   },
   "dependencies": {
+    "@autotelic/fastify-queue": "^0.1.2",
     "bcrypt": "^5.0.1",
     "bignumber.js": "^9.0.2",
     "bintrees": "^1.0.2",

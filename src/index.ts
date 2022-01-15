@@ -3,10 +3,13 @@ import routes from './routes';
 import { Options } from './config';
 import swagger from 'fastify-swagger';
 import dotenv from 'dotenv';
+import fastifyQueue from '@autotelic/fastify-queue';
 
 dotenv.config();
 
 const server = fastify()
+
+server.register(fastifyQueue, { concurrency: 1 });
 
 server.register(swagger, Options);
 

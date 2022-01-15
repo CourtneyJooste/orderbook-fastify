@@ -23,8 +23,10 @@ const getOrdersRoute: RouteOptions = {
 export const addOrder = async (req: FastifyRequest, reply: Reply): Promise<boolean> => {
   const order = req.body;
   const validated = await orderSchema.validate(order, { stripUnknown: true });
-  orderbook.add({ id: uuidv4(), ...validated } as NewOrder);
-  orderbook.processOrders();
+
+  // Push new order and sync request to queue
+  (reply as any).queue.add('add', orderbook.add({ id: uuidv4(), ...validated } as NewOrder));
+  (reply as any).queue.add('sync', orderbook.processOrders());
   return true;
 };
 

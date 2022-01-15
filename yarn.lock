@@ -9,6 +9,14 @@
   dependencies:
     tslib "^1.9.0"
 
+"@autotelic/fastify-queue@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@autotelic/fastify-queue/-/fastify-queue-0.1.2.tgz#84685e0eb2091132a67a32ea1006689d65ee0ef1"
+  integrity sha512-8mmlYqJjERV21HimFaY0FG2DkBZzek6ltKk3JGxTWbjIeI51paUVZpI6b8M6Z1ATaWfELLO1qi+7oLm6ddwoFw==
+  dependencies:
+    fastify-plugin "^3.0.0"
+    p-props "^4.0.0"
+
 "@babel/code-frame@7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
@@ -5135,6 +5143,20 @@ p-map@^3.0.0:
   integrity sha512-d3qXVTF/s+W+CdJ5A29wywV2n8CQQYahlgz2bFiA+4eVNJbHJodPZ+/gXwPGh0bOqA+j8S+6+ckmvLGPk1QpxQ==
   dependencies:
     aggregate-error "^3.0.0"
+
+p-map@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/p-map/-/p-map-4.0.0.tgz#bb2f95a5eda2ec168ec9274e06a747c3e2904d2b"
+  integrity sha512-/bjOqmgETBYB5BoEeGVea8dmvHb2m9GLy1E9W43yeyfP6QQCZGFNa+XRceJEuDB6zqr+gKpIAmlLebMpykw/MQ==
+  dependencies:
+    aggregate-error "^3.0.0"
+
+p-props@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/p-props/-/p-props-4.0.0.tgz#f37c877a9a722057833e1dc38d43edf3906b3437"
+  integrity sha512-3iKFbPdoPG7Ne3cMA53JnjPsTMaIzE9gxKZnvKJJivTAeqLEZPBu6zfi6DYq9AsH1nYycWmo3sWCNI8Kz6T2Zg==
+  dependencies:
+    p-map "^4.0.0"
 
 p-try@^2.0.0:
   version "2.2.0"

@@ -1,5 +1,5 @@
 import { Orderbook, checkState } from '../lib';
-import { Book, ChangeOrder, MatchOrder } from '../types';
+import { Book, ChangeOrder, MatchOrder, Trade } from '../types';
 
 describe('Orderbook', () => {
   it('Add orders to orderbook', () => {
@@ -80,7 +80,13 @@ describe('Orderbook', () => {
     orderbook.state(apiState);
     orderbook.processOrders();
 
-    checkState(orderbook.getTrades(), expected)
+    // Strip created and id props
+    const trades = orderbook.getTrades().map((t: Trade) => {
+      const { created, id, ...rest } = t;
+      return { ...rest };
+    });
+
+    checkState(trades, expected);
   });
 
   it('Remove orders from orderbook', () => {
