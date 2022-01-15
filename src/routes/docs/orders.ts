@@ -1,4 +1,17 @@
 
+const orderObj = {
+  type: 'array',
+  items: {
+    type: 'object',
+    properties: {
+      id: { type: 'string' },
+      price: { type: 'string' },
+      size: { type: 'string' },
+      side: { type: 'string' }
+    },
+  }
+};
+
 export const GetOrderSchema = {
   description: 'Gets orders',
   tags: ['orders'],
@@ -8,8 +21,8 @@ export const GetOrderSchema = {
       description: 'Successful response',
       type: 'object',
       properties: {
-        bids: { type: 'array' },
-        asks: { type: 'array' }
+        bids: { ...orderObj },
+        asks: { ...orderObj }
       },
     },
   },
@@ -42,15 +55,18 @@ export const GetTradesSchema = {
   response: {
     200: {
       description: 'Successful response',
-      type: 'object',
-      properties: {
-        id: { type: 'string' },
-        price: { type: 'string' },
-        size: { type: 'string' },
-        sellerId: { type: 'string' },
-        buyerId: { type: 'string' },
-        created: { type: 'string', format: 'date' }
-      },
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          price: { type: 'string' },
+          size: { type: 'string' },
+          sellerId: { type: 'string' },
+          buyerId: { type: 'string' },
+          created: { type: 'string', format: 'datetime' }
+        },
+      }
     },
   },
 };

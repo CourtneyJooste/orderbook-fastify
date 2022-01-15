@@ -80,5 +80,5 @@ export interface Trade {
   size: string,
   sellerId: string,
   buyerId: string,
-  created: string
+  created: Date
 }

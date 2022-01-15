@@ -1,5 +1,5 @@
 import { FastifyRequest, RouteOptions } from 'fastify';
-import { Book, NewOrder, orderSchema, Reply } from '../types';
+import { Book, NewOrder, orderSchema, Reply, Trade } from '../types';
 import { preValidation } from '../middleware';
 import { GetOrderSchema } from './docs';
 import { Orderbook } from '../lib';
@@ -16,15 +16,15 @@ const getOrdersRoute: RouteOptions = {
   method: 'GET',
   url: '/orders',
   handler: getOrders,
-  // preValidation,
+  preValidation,
   schema: GetOrderSchema,
 };
 
-export const addOrder = async (req: FastifyRequest, reply: Reply): Promise<any> => {
+export const addOrder = async (req: FastifyRequest, reply: Reply): Promise<boolean> => {
   const order = req.body;
   const validated = await orderSchema.validate(order, { stripUnknown: true });
   orderbook.add({ id: uuidv4(), ...validated } as NewOrder);
-  orderbook.processOrders()
+  orderbook.processOrders();
   return true;
 };
 
@@ -32,11 +32,11 @@ const addOrderRoute: RouteOptions = {
   method: 'POST',
   url: '/order',
   handler: addOrder,
-  // preValidation,
+  preValidation,
   schema: AddOrderSchema,
 };
 
-export const getTrades = async (req: FastifyRequest, reply: Reply): Promise<Book> => {
+export const getTrades = async (req: FastifyRequest, reply: Reply): Promise<any> => {
   return orderbook.getTrades();
 };
 
@@ -44,7 +44,7 @@ const getTradesRoute: RouteOptions = {
   method: 'GET',
   url: '/trades',
   handler: getTrades,
-  // preValidation,
+  preValidation,
   schema: GetTradesSchema,
 };
 

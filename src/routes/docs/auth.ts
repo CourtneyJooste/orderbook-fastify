@@ -2,7 +2,7 @@ export const GetAuthSchema = {
   description: 'Gets auth',
   tags: ['auth'],
   summary: 'Gets auth',
-  params: {
+  query: {
     type: 'object',
     properties: {
       username: {

@@ -181,16 +181,20 @@ Orderbook.prototype.processOrders = function() {
       makerOrderId: buyOrder.id
     })
 
-    // Add trade to trade history
-    // Assuming market price is in seller's favour
-    this.trades.push({
+    const trade: Trade = {
       id: uuidv4(),
-      price: buyHead.price,
+      price: buyHead.price.toString(),
       sellerId: sellOrder.id,
       buyerId: buyOrder.id,
       created: new Date(),
-      size
-    })
+      size: size.toString()
+    };
+
+    console.log('Actioning new trade: ', trade);
+
+    // Add trade to trade history
+    // Assuming market price is in seller's favour
+    this.trades.push(trade)
 
     // Grab next available head if there are no more orders
     if (sellHead.orders.length <= 0) {
