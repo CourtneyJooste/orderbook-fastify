@@ -14,9 +14,6 @@ $ yarn install
 
 ```bash
 # development
-$ yarn run
-
-# production
 $ yarn build
 $ yarn start
 
