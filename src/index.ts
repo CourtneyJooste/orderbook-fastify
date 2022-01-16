@@ -1,6 +1,6 @@
 import fastify from 'fastify';
 import routes from './routes';
-import { Options } from './config';
+import { corsOptions, Options } from './config';
 import swagger from 'fastify-swagger';
 import dotenv from 'dotenv';
 import fastifyQueue from '@autotelic/fastify-queue';
@@ -14,12 +14,10 @@ server.register(fastifyQueue, { concurrency: 1 });
 
 server.register(swagger, Options);
 
+server.register(fastifyCors, corsOptions);
+
 routes.forEach(route => {
   server.route(route);
-});
-
-server.register(fastifyCors, {
-  // put cors options here
 });
 
 const start = async (): Promise<void> => {
