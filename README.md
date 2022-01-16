@@ -56,6 +56,7 @@ Create a .env file in your project root and populate the following:
 USERNAME=<your username>
 PASSWORD=<bcrypt hashed password with salt=10>
 TOKEN_KEY=<the key for your web tokens>
+PORT=<optional port to use instead of 8080>
 ```
 
 In a production environment, the usernames and passwords should be matched against a user pool instead of using environment variables.
@@ -67,7 +68,7 @@ First, ensure you have followed the .env set up.
 Make a GET request to /auth with params username and password.
 
 ```http request
-http://localhost/auth?username=demo&password=demo
+http://localhost:8080/auth?username=demo&password=demo
 ```
 
 ## Docs
