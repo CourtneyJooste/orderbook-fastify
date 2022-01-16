@@ -2,6 +2,9 @@
   "name": "orderbook-fastify",
   "version": "1.0.0",
   "license": "MIT",
+  "engines" : {
+    "node" : ">=16"
+  },
   "scripts": {
     "start": "yarn build && node dist/index.js",
     "start:dev": "cross-env NODE_ENV=development nodemon",
