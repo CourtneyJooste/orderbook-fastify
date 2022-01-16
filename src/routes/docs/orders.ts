@@ -12,10 +12,15 @@ const orderObj = {
   }
 };
 
+const headers = {
+  authorization: { type: 'string' }
+};
+
 export const GetOrderSchema = {
   description: 'Gets orders',
   tags: ['orders'],
   summary: 'Gets all ask and bid orders from orderbook',
+  headers,
   response: {
     200: {
       description: 'Successful response',
@@ -25,6 +30,7 @@ export const GetOrderSchema = {
         asks: { ...orderObj }
       },
     },
+
   },
 };
 
@@ -32,6 +38,7 @@ export const AddOrderSchema = {
   description: 'Adds order to orderbook',
   tags: ['orders'],
   summary: 'Adds a new limit order',
+  headers,
   body: {
     type: 'object',
     properties: {
@@ -44,7 +51,7 @@ export const AddOrderSchema = {
     200: {
       description: 'Successful response',
       type: 'boolean'
-    },
+    }
   },
 };
 
@@ -52,6 +59,7 @@ export const GetTradesSchema = {
   description: 'Gets trades',
   tags: ['trades'],
   summary: 'Gets all successful trades',
+  headers,
   response: {
     200: {
       description: 'Successful response',

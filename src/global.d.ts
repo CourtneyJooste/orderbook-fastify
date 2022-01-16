@@ -1,1 +1,1 @@
-declare module '@autotelic/fastify-queue'
+declare module '@autotelic/fastify-queue';

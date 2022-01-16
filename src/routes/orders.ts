@@ -1,5 +1,5 @@
 import { FastifyRequest, RouteOptions } from 'fastify';
-import { Book, NewOrder, orderSchema, Reply, Trade } from '../types';
+import { Book, NewOrder, orderSchema, Reply, ReplyT, Trade } from '../types';
 import { preValidation } from '../middleware';
 import { GetOrderSchema } from './docs';
 import { Orderbook } from '../lib';
@@ -24,9 +24,11 @@ export const addOrder = async (req: FastifyRequest, reply: Reply): Promise<boole
   const order = req.body;
   const validated = await orderSchema.validate(order, { stripUnknown: true });
 
+  const r = reply as ReplyT;
+
   // Push new order and sync request to queue
-  (reply as any).queue.add('add', orderbook.add({ id: uuidv4(), ...validated } as NewOrder));
-  (reply as any).queue.add('sync', orderbook.processOrders());
+  r.queue.add('add', orderbook.add({ id: uuidv4(), ...validated } as NewOrder));
+  r.queue.add('sync', orderbook.processOrders());
   return true;
 };
 
@@ -38,7 +40,7 @@ const addOrderRoute: RouteOptions = {
   schema: AddOrderSchema,
 };
 
-export const getTrades = async (req: FastifyRequest, reply: Reply): Promise<any> => {
+export const getTrades = async (req: FastifyRequest, reply: Reply): Promise<Trade[]> => {
   return orderbook.getTrades();
 };
 

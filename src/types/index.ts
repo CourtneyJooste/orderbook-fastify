@@ -8,6 +8,8 @@ export type Request = FastifyRequest<RouteGenericInterface, Server, IncomingMess
 
 export type Reply = FastifyReply<Server, IncomingMessage, ServerResponse, RouteGenericInterface, any>;
 
+export type ReplyT = Reply & { queue: any };
+
 export interface IQuerystring {
   username: string;
   password: string;
